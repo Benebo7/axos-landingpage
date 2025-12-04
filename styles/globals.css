@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -74,9 +76,6 @@
     font-family: 'Fragment Mono', monospace;
   }
 }
-
-/* Import Fragment Mono from Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&display=swap');
 
 /* GT Alpina Font Family - Para títulos do hero */
 @font-face {
