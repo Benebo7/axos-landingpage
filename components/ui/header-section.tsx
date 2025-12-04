@@ -104,8 +104,7 @@ export function HeaderSection({ className }: HeaderSectionProps) {
         {/* Right Side - Buttons - Hidden on mobile, visible on desktop */}
         <div className="hidden lg:flex items-center gap-2">
           <Link
-            href="#"
-            onClick={(e) => handleNavClick(e, '#')}
+            href="/dashboard"
             className="px-6 py-2 rounded-lg text-sm font-medium text-white hover:text-white/70 transition-colors leading-[22.4px] tracking-[-0.32px]"
           >
             Login
