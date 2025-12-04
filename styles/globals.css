@@ -1,0 +1,776 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+    /* Standard Axos purple (reverted to previous header color #7A3BFF) */
+    --axos-purple: 260 100% 62%;
+    /* Accent/darker variant (matches #7223C2 like previously used) */
+    --axos-purple-2: 268 74% 46%;
+    
+    /* Rainbow button colors */
+    --color-1: 0 100% 63%;
+    --color-2: 270 100% 63%;
+    --color-3: 210 100% 63%;
+    --color-4: 195 100% 63%;
+    --color-5: 90 100% 63%;
+  }
+
+  .dark {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 0%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 0%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 0 0% 100%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 60%;
+    --accent: 0 0% 15%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 0 0% 80%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Akkurat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  }
+  
+  /* Fragment Mono para botões */
+  button {
+    font-family: 'Fragment Mono', monospace;
+  }
+}
+
+/* Import Fragment Mono from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&display=swap');
+
+/* GT Alpina Font Family - Para títulos do hero */
+@font-face {
+  font-family: 'GT Alpina';
+  src: url('/fonts/GT Alpina Light-normal-300-100.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Akkurat Font Family - Para textos gerais */
+@font-face {
+  font-family: 'Akkurat';
+  src: url('/fonts/Akkurat-normal-400-100.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Prevent autofill background (Chrome/Safari) from showing white */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  /* match component base bg (use solid or higher alpha to suppress white) */
+  -webkit-box-shadow: 0 0 0 1000px hsl(var(--background)) inset !important;
+  -webkit-text-fill-color: hsl(var(--foreground)) !important;
+  caret-color: hsl(var(--foreground)) !important;
+  transition: background-color 0s 600000s, color 0s 600000s !important;
+}
+
+/* CPU Architecture Animations - Optimized for performance */
+.cpu-architecture {
+  backface-visibility: hidden;
+  contain: layout style paint;
+  content-visibility: auto;
+}
+
+.cpu-line-1 {
+  offset-path: path("M 10 20 h 79.5 q 5 0 5 5 v 30");
+  animation-duration: 5s;
+  animation-delay: 1s;
+}
+
+.cpu-line-2 {
+  offset-path: path("M 180 10 h -69.7 q -5 0 -5 5 v 30");
+  animation-delay: 6s;
+  animation-duration: 2s;
+}
+
+.cpu-line-3 {
+  offset-path: path("M 130 20 v 21.8 q 0 5 -5 5 h -10");
+  animation-delay: 4s;
+  animation-duration: 6s;
+}
+
+.cpu-line-4 {
+  offset-path: path("M 170 80 v -21.8 q 0 -5 -5 -5 h -50");
+  animation-delay: 3s;
+  animation-duration: 3s;
+}
+
+.cpu-line-5 {
+  offset-path: path(
+    "M 135 65 h 15 q 5 0 5 5 v 10 q 0 5 -5 5 h -39.8 q -5 0 -5 -5 v -20"
+  );
+  animation-delay: 9s;
+  animation-duration: 4s;
+}
+
+.cpu-line-6 {
+  offset-path: path("M 94.8 95 v -36");
+  animation-delay: 3s;
+  animation-duration: 7s;
+}
+
+.cpu-line-7 {
+  offset-path: path(
+    "M 88 88 v -15 q 0 -5 -5 -5 h -10 q -5 0 -5 -5 v -5 q 0 -5 5 -5 h 28"
+  );
+  animation-delay: 4s;
+  animation-duration: 4s;
+}
+
+.cpu-line-8 {
+  offset-path: path("M 30 30 h 25 q 5 0 5 5 v 6.5 q 0 5 5 5 h 20");
+  animation-delay: 3s;
+  animation-duration: 3s;
+}
+
+@keyframes animation-path {
+  0% {
+    offset-distance: 0%;
+  }
+  100% {
+    offset-distance: 100%;
+  }
+}
+
+/* Enable CSS motion path for CPU moving lights */
+.cpu-line-1,.cpu-line-2,.cpu-line-3,.cpu-line-4,.cpu-line-5,.cpu-line-6,.cpu-line-7,.cpu-line-8{
+  animation-name: animation-path;
+  animation-duration: var(--cpu-speed, 5s);
+  animation-timing-function: cubic-bezier(.2,0,.2,1);
+  animation-iteration-count: infinite;
+  contain: layout;
+}
+
+/* Database with REST API Animations - Optimized for performance */
+.database {
+  offset-anchor: 10px 0px;
+  animation: database-animation-path;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  animation-duration: 4s;
+  animation-delay: 1s;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  contain: layout style paint;
+}
+
+.db-light-1 {
+  offset-path: path("M 31 10 v 15 q 0 5 5 5 h 59 q 5 0 5 5 v 10");
+}
+
+.db-light-2 {
+  offset-path: path("M 77 10 v 10 q 0 5 5 5 h 13 q 5 0 5 5 v 10");
+}
+
+.db-light-3 {
+  offset-path: path("M 124 10 v 10 q 0 5 -5 5 h -14 q -5 0 -5 5 v 10");
+}
+
+.db-light-4 {
+  offset-path: path("M 170 10 v 15 q 0 5 -5 5 h -60 q -5 0 -5 5 v 10");
+}
+
+@keyframes database-animation-path {
+  0% {
+    offset-distance: 0%;
+  }
+  100% {
+    offset-distance: 100%;
+  }
+} 
+
+/* Enable CSS motion path for DB moving lights */
+.db-light-1,.db-light-2,.db-light-3,.db-light-4{
+  animation: database-animation-path var(--db-speed, 4s) cubic-bezier(0,0,.2,1) infinite;
+  contain: layout;
+}
+
+/* Generic pulse scale animations for decorative circles */
+@keyframes pulseScaleA {
+  0% { transform: scale(0.98); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(0.98); }
+}
+
+@keyframes pulseScaleB {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.98); }
+  100% { transform: scale(1); }
+}
+
+/* Lenis Smooth Scroll */
+html.lenis, 
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Previne scroll horizontal e otimiza performance */
+html {
+  overflow-x: hidden;
+  overflow-y: hidden; /* janela não rola */
+  max-width: 100vw;
+}
+
+body {
+  overflow-x: hidden;
+  overflow-y: hidden; /* body não rola */
+  max-width: 100vw;
+}
+
+/* Performance optimizations */
+* {
+  box-sizing: border-box;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Reveal animations (CSS-only, replacing heavy JS enters) */
+.reveal{
+  opacity: 0;
+  transform: translateY(var(--reveal-y, 14px));
+  transition: opacity .45s ease, transform .45s ease;
+  contain: layout style paint;
+  content-visibility: auto;
+}
+.reveal-in-view{
+  opacity: 1;
+  transform: translateY(0);
+}
+html:not(.reveal-ready) .reveal{
+  transition: none;
+}
+@media (prefers-reduced-motion: reduce){
+  .reveal{
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Optimize font rendering */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-display: swap;
+}
+
+/* Logo loading optimization */
+.logo-container {
+  min-height: 48px;
+  min-width: 48px;
+}
+
+@media (max-width: 640px) {
+  .logo-container {
+    min-height: 32px;
+    min-width: 32px;
+  }
+}
+
+/* Prevent layout shift on logo */
+.logo-image-wrapper {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.logo-text {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Header button optimization - prevent white flash */
+.header-cta-button {
+  background: linear-gradient(to right, hsl(var(--axos-purple)), hsl(var(--axos-purple-2))) !important;
+  color: white !important;
+  border: none !important;
+  box-shadow: none !important;
+  /* Prevent any background color from showing through */
+  background-color: hsl(var(--axos-purple)) !important;
+}
+
+.header-cta-button:hover {
+  background: linear-gradient(to right, rgba(122, 59, 255, 0.9), rgba(114, 35, 194, 0.9)) !important;
+  box-shadow: 0 10px 25px rgba(122, 59, 255, 0.25) !important;
+}
+
+/* Ensure button is styled immediately on load */
+.header-cta-button * {
+  color: white !important;
+}
+
+/* Override any default button styles that might cause white flash */
+button.header-cta-button,
+a.header-cta-button {
+  background: linear-gradient(to right, hsl(var(--axos-purple)), hsl(var(--axos-purple-2))) !important;
+  background-color: hsl(var(--axos-purple)) !important;
+} 
+
+/* Scrollbar styling */
+/* WebKit (Chrome/Edge/Safari) */
+.lenis::-webkit-scrollbar {
+  width: 8px; /* Largura pequena */
+  height: 8px;
+}
+.lenis::-webkit-scrollbar-track {
+  background: transparent;
+}
+.lenis::-webkit-scrollbar-thumb {
+  background-color: #262626;
+  border-radius: 8px;
+  border: 2px solid transparent; /* Ajustado para barra mais fina */
+  background-clip: content-box;
+}
+.lenis::-webkit-scrollbar-thumb:hover {
+  background-color: #404040;
+}
+
+/* Firefox */
+.lenis {
+  scrollbar-width: thin; /* Equivalente a "pequeno" no Firefox */
+  scrollbar-color: #262626 transparent;
+}
+
+/* Garante que o container principal ocupe toda a viewport e mostre a barra */
+.lenis {
+  height: 100dvh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Form CTA Container - Breathing animation */
+@keyframes cta-breathe {
+  0%, 100% { 
+    box-shadow: 0 25px 50px -12px rgba(168, 85, 247, 0.25),
+                0 0 0 1px rgba(168, 85, 247, 0.1);
+  }
+  50% { 
+    box-shadow: 0 25px 50px -12px rgba(168, 85, 247, 0.4),
+                0 0 0 1px rgba(168, 85, 247, 0.2);
+  }
+}
+
+@keyframes cta-breathe-mobile {
+  0%, 100% { 
+    box-shadow: 0 20px 40px -12px rgba(168, 85, 247, 0.3),
+                0 0 0 1px rgba(168, 85, 247, 0.15);
+  }
+  50% { 
+    box-shadow: 0 20px 40px -12px rgba(168, 85, 247, 0.45),
+                0 0 0 1px rgba(168, 85, 247, 0.25);
+  }
+}
+
+.cta-form-container {
+  animation: cta-breathe 4s ease-in-out infinite;
+}
+
+/* Mobile: sombra mais suave e estática */
+@media (max-width: 768px) {
+  .cta-form-container {
+    animation: cta-breathe-mobile 4s ease-in-out infinite;
+  }
+  
+  /* Em mobile, aumenta o spotlight para criar efeito mais uniforme */
+  .cta-glow-card {
+    --size: 400 !important; /* Spotlight maior = borda mais uniforme */
+    --bg-spot-opacity: 0.12 !important; /* Reduz um pouco a intensidade no fundo */
+    --border-spot-opacity: 0.7 !important; /* Borda mais presente mas não exagerada */
+  }
+}
+
+/* Tablet e acima: spotlight menor e mais focado no cursor */
+@media (min-width: 769px) {
+  .cta-glow-card {
+    --size: 220; /* Spotlight focado */
+  }
+}
+
+/* Animation delay utilities */
+@layer utilities {
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+}
+
+/* Paper plane take-off animation */
+@keyframes take-off {
+  50% {
+    transform: translate(8px, -8px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.animate-take-off {
+  animation: take-off 0.6s ease-out 1;
+  will-change: transform;
+}
+
+/* Fade in blur animation for tabs */
+@keyframes fadeInBlur {
+  0% {
+    opacity: 0;
+    filter: blur(10px);
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in-blur {
+  animation: fadeInBlur 0.5s ease-out forwards;
+}
+
+/* Shimmer Slide Animation for Aesthetic Lines */
+@keyframes shimmer-slide {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+.animate-shimmer-slide {
+  animation: shimmer-slide 3s linear infinite;
+  background-size: 200% 100%;
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* --- SHINY BUTTON CSS START --- */
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@property --gradient-angle-offset {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@property --gradient-percent {
+  syntax: "<percentage>";
+  initial-value: 5%;
+  inherits: false;
+}
+
+@property --gradient-shine {
+  syntax: "<color>";
+  initial-value: white;
+  inherits: false;
+}
+
+.shiny-cta {
+  --shiny-cta-bg: #000000;
+  --shiny-cta-bg-subtle: #1a1818;
+  --shiny-cta-fg: #ffffff;
+  --shiny-cta-highlight: #7A3BFF;
+  --shiny-cta-highlight-subtle: #9333ea;
+  --animation: gradient-angle linear infinite;
+  --duration: 3s;
+  --shadow-size: 2px;
+  --transition: 800ms cubic-bezier(0.25, 1, 0.5, 1);
+  
+  isolation: isolate;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  outline-offset: 4px;
+  padding: 1rem 2rem;
+  font-family: 'Fragment Mono', monospace;
+  font-size: 0.875rem;
+  line-height: 1;
+  font-weight: 500;
+  border: 1px solid transparent;
+  border-radius: 9999px;
+  color: var(--shiny-cta-fg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(var(--shiny-cta-bg), var(--shiny-cta-bg)) padding-box,
+    conic-gradient(
+      from calc(var(--gradient-angle) - var(--gradient-angle-offset)),
+      transparent,
+      var(--shiny-cta-highlight) var(--gradient-percent),
+      var(--gradient-shine) calc(var(--gradient-percent) * 2),
+      var(--shiny-cta-highlight) calc(var(--gradient-percent) * 3),
+      transparent calc(var(--gradient-percent) * 4)
+    ) border-box;
+  box-shadow: inset 0 0 0 1px var(--shiny-cta-bg-subtle);
+  transition: var(--transition);
+  transition-property: --gradient-angle-offset, --gradient-percent, --gradient-shine;
+}
+
+.shiny-cta::before,
+.shiny-cta::after,
+.shiny-cta span::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset-inline-start: 50%;
+  inset-block-start: 50%;
+  translate: -50% -50%;
+  z-index: -1;
+}
+
+.shiny-cta:active {
+  translate: 0 1px;
+}
+
+/* Dots pattern */
+.shiny-cta::before {
+  --size: calc(100% - var(--shadow-size) * 3);
+  --position: 2px;
+  --space: calc(var(--position) * 2);
+  width: var(--size);
+  height: var(--size);
+  background: radial-gradient(
+    circle at var(--position) var(--position),
+    white calc(var(--position) / 4),
+    transparent 0
+  ) padding-box;
+  background-size: var(--space) var(--space);
+  background-repeat: space;
+  mask-image: conic-gradient(
+    from calc(var(--gradient-angle) + 45deg),
+    black,
+    transparent 10% 90%,
+    black
+  );
+  border-radius: inherit;
+  opacity: 0.4;
+  z-index: -1;
+}
+
+/* Inner shimmer */
+.shiny-cta::after {
+  --animation: shimmer linear infinite;
+  width: 100%;
+  aspect-ratio: 1;
+  background: linear-gradient(
+    -50deg,
+    transparent,
+    var(--shiny-cta-highlight),
+    transparent
+  );
+  mask-image: radial-gradient(circle at bottom, transparent 40%, black);
+  opacity: 0.6;
+}
+
+.shiny-cta span {
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.shiny-cta span::before {
+  --size: calc(100% + 1rem);
+  width: var(--size);
+  height: var(--size);
+  box-shadow: inset 0 -1ex 2rem 4px var(--shiny-cta-highlight);
+  opacity: 0;
+  transition: opacity var(--transition);
+  animation: calc(var(--duration) * 1.5) breathe linear infinite;
+}
+
+/* Animate */
+.shiny-cta,
+.shiny-cta::before,
+.shiny-cta::after {
+  animation: var(--animation) var(--duration),
+    var(--animation) calc(var(--duration) / 0.4) reverse paused;
+  animation-composition: add;
+}
+
+.shiny-cta:is(:hover, :focus-visible) {
+  --gradient-percent: 20%;
+  --gradient-angle-offset: 95deg;
+  --gradient-shine: var(--shiny-cta-highlight-subtle);
+}
+
+.shiny-cta:is(:hover, :focus-visible),
+.shiny-cta:is(:hover, :focus-visible)::before,
+.shiny-cta:is(:hover, :focus-visible)::after {
+  animation-play-state: running;
+}
+
+.shiny-cta:is(:hover, :focus-visible) span::before {
+  opacity: 1;
+}
+
+@keyframes gradient-angle {
+  to {
+    --gradient-angle: 360deg;
+  }
+}
+
+@keyframes shimmer {
+  to {
+    rotate: 360deg;
+  }
+}
+
+@keyframes breathe {
+  from, to {
+    scale: 1;
+  }
+  50% {
+    scale: 1.2;
+  }
+}
+
+/* Utility to override for small card buttons */
+.shiny-cta-sm {
+  padding: 0.6rem 1.2rem;
+  font-size: 0.7rem;
+}
+/* --- SHINY BUTTON CSS END --- */
+
+/* Glass panel effect */
+.glass-panel {
+  background: rgba(20, 20, 20, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-hover:hover {
+  background: rgba(30, 30, 30, 0.8);
+  border-color: rgba(255, 255, 255, 0.12);
+  transition: all 0.3s ease;
+}
+
+/* Card stack animation for pain points */
+.card-stack-wrapper {
+  perspective: 1000px;
+}
+
+.stack-card {
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.6s ease, filter 0.6s ease;
+  transform-origin: center bottom;
+  will-change: transform, opacity, filter;
+}
+
+/* Reveal animation for bento sections */
+.reveal.active {
+  animation: revealAnim 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.delay-100 {
+  animation-delay: 0.1s;
+}
+
+.delay-200 {
+  animation-delay: 0.2s;
+}
+
+.delay-300 {
+  animation-delay: 0.3s;
+}
+
+.delay-500 {
+  animation-delay: 0.5s;
+}
+
+@keyframes revealAnim {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+    filter: blur(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}

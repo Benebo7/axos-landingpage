@@ -1,0 +1,6 @@
+# Arquivos do Vercel
+.vercel
+
+# Arquivos de desenvolvimento
+*.log
+.DS_Store 

@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://axos.ai/sitemap.xml
+
+
+
+
+
+
+
+
+
+
