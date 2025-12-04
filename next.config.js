@@ -139,6 +139,19 @@ const nextConfig = {
   // Reduce build output
   compress: true,
   poweredByHeader: false,
+
+   async rewrites() {
+    return [
+      {
+        source: '/dashboard',
+        destination: 'https://frapto.vercel.app/',
+      },
+      {
+        source: '/dashboard/:path*',
+        destination: 'https://frapto.vercel.app/:path*',
+      },
+    ]
+  },
 }
 
 module.exports = withBundleAnalyzer(nextConfig) 
