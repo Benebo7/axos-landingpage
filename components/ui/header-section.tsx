@@ -107,7 +107,7 @@ export function HeaderSection({ className }: HeaderSectionProps) {
             href="/dashboard"
             className="px-6 py-2 rounded-lg text-sm font-medium text-white hover:text-white/70 transition-colors leading-[22.4px] tracking-[-0.32px]"
           >
-            Login
+            Dashboard
           </Link>
           <Link
             href="#"
