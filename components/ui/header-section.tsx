@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
 import { useLenis } from 'lenis/react'
+import { useAuth } from '@/hooks/useAuth'
 
 interface HeaderSectionProps {
   className?: string
@@ -23,6 +24,7 @@ export function HeaderSection({ className }: HeaderSectionProps) {
   const lenis: any = useLenis()
   const lightRef = React.useRef<HTMLDivElement>(null)
   const [isHovering, setIsHovering] = React.useState(false)
+  const { isLoggedIn, isLoading } = useAuth()
 
   const handleMouseMove = React.useCallback((e: React.MouseEvent<HTMLElement>) => {
     if (!lightRef.current) return
@@ -107,11 +109,10 @@ export function HeaderSection({ className }: HeaderSectionProps) {
             href="/dashboard"
             className="px-6 py-2 rounded-lg text-sm font-medium text-white hover:text-white/70 transition-colors leading-[22.4px] tracking-[-0.32px]"
           >
-            Dashboard
+            {isLoading ? '...' : isLoggedIn ? 'Dashboard' : 'Login'}
           </Link>
           <Link
-            href="#"
-            onClick={(e) => handleNavClick(e, '#')}
+            href="/dashboard"
             className="px-6 py-3 bg-[#f3f3f3] rounded-lg text-sm font-medium text-[#050505] hover:bg-[#e8e8e8] transition-colors leading-[22.4px] tracking-[-0.32px]"
           >
             Try for free
